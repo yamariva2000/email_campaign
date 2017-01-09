@@ -66,12 +66,12 @@ def eda(graph=True):
 
     plot=[country,purchases, email_type, email_text, days, time]
     fig = plt.figure(1, figsize=(24, 14))
-    plt.suptitle('Figure 1: Email Campaign EDA', fontsize=20)
+    plt.suptitle('Figure 1: Email Campaign EDA', fontsize=25)
     import sampling
     for i,j in enumerate(plot):
         ax=fig.add_subplot(2,3,i+1)
 
-        plt.title('Plot {}: Response vs. {}'.format(i+1,j.index.name))
+        plt.title('Plot {}: Response vs. {}'.format(i+1,j.index.name),fontsize=20)
 
 
         # for h in range(len(j)):
@@ -84,13 +84,15 @@ def eda(graph=True):
 
         sb.barplot(j.index,j['conv'],label='conversion')
         plt.plot(range(len(j.index)),j['opr'],label='open rate')
-        ax.legend(loc=0)
+        ax.legend(loc=0,fontsize=20)
+
         fmt = '%.2f%%'
         yticks = mtick.FormatStrFormatter(fmt)
         ax.yaxis.set_major_formatter(yticks)
 
-        plt.ylabel('percent')
+        plt.ylabel('percent',fontsize=16)
 
+        plt.xticks(fontsize=16)
     if graph:
         plt.show()
 
