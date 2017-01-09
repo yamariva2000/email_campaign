@@ -29,7 +29,7 @@ def run_sim():
             n,email_sim=NB_sim(p.values[z,0],p.values[z,1])
             m=np.mean(email_sim)
 
-            ax.text(m,-50,p.index[z],fontsize=20,fontweight='bold',rotation=45,color='orange')
+            ax.text(m,-10,p.index[z],fontsize=20,fontweight='bold',rotation=45,color='orange')
 
             ax.hist(email_sim,label="{} n={}".format(p.index[z],n))
 
@@ -46,7 +46,7 @@ def run_sim2():
     d=data()
 
     fig = plt.figure(2, figsize=(30, 15))
-    fig.suptitle('NB optimized click rates',fontsize=25)
+    fig.suptitle('NB optimized click rates',fontsize=35)
     for j,i in enumerate([['prior_purchases','user_country','email_version','email_text','day_type']]):
         #print d.head()
 
@@ -67,16 +67,16 @@ def run_sim2():
             n,email_sim=NB_sim(p.values[z,0],p.values[z,1])
             m=np.mean(email_sim)
             #print m
-            ax.text(m,160,p.index[z],fontsize=20,fontweight='bold',rotation=45,color='orange')
+            ax.text(m,200,p.index[z],fontsize=25,fontweight='bold',rotation=40,color='orange')
 
             ax.hist(email_sim,label="{} n={}".format(p.index[z],n))
 
-        ax.set_title('{} vs. click rate'.format(i),fontsize=16)
-        ax.set_xlabel('Click Rate',fontsize=16)
-        plt.xticks(fontsize=16)
+        ax.set_title('{} vs. click rate'.format(i),fontsize=20)
+        ax.set_xlabel('Click Rate',fontsize=20)
+        plt.xticks(fontsize=20)
 
-        ax.legend(loc=0,fontsize=14)
-        ax.set_ylabel('Frequency',fontsize=14)
+        #ax.legend(loc=0,fontsize=16)
+        ax.set_ylabel('Frequency',fontsize=20)
     plt.show()
 
 
