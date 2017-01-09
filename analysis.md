@@ -44,9 +44,7 @@ Although this would achieve the highest conversion rate, this would be a very na
 **Did you find any interesting pattern on how the email campaign performed for different
 segments of users? Explain.**
 
-
-
-Yes, I found that French and Spanish users had much lower email open rates than US or UK customers.  See plot 1.
+Yes, I found that French and Spanish users had much lower email open rates than US or UK customers.  See plot 1 below.
 
 
 There may be a cultural difference in terms of email privacy that may reflect this.  Also,  users with higher prior purchases had much better response rates probably reflecting ongoing engagement with the web platform.  The timing of email deliveries matters somewhat.  Receptivity was better on weekdays rather than weekends.  In addition, emails sent in the afternoons or early mornings were more effective than at night or in the later morning.      
@@ -58,3 +56,8 @@ In order to obtain more Continental European customers it may be necessary to re
 
 ![EDA](./eda2.png)
 
+Appendix:
+
+Naive bayes simulated distributions
+
+![NB](./NB_distributions.png)
