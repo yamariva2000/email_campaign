@@ -1,25 +1,13 @@
-from data import data
-from numpy.random import choice
-from itertools import combinations,product
-import numpy as np
-from random import shuffle
-from numpy.random import beta
 import matplotlib.pyplot as plt
-import seaborn as sb
+import numpy as np
 import pandas as pd
+from numpy.random import beta
+from data import data
+
 def NB_sim(conv,sent,n=1000):
 
-    # if sent<n:
-    #     raw_input('sent is only ' + str(sent))
-    #
     n=min(sent,n)
-
-
     return  n,beta(1+conv,1+sent-conv,n)
-
-
-
-#print [i for i in productde(['generic','personalized'],['short_email','long_email'],['US','UK','ES','FR'])]
 
 
 def run_sim():

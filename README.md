@@ -1,4 +1,4 @@
 # email_campaign
 Take Home Exam
 
-Please open analysis.ipynb
+Please open analysis.md
