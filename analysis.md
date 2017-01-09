@@ -47,7 +47,9 @@ segments of users? Explain.*
 
 >Yes, I found that French and Spanish users had much lower email open rates than US or UK customers.  See plot 1 below.
 
->There may be a cultural difference in terms of email privacy that may reflect this.  Also,  users with higher prior purchases had much better response rates probably reflecting ongoing engagement with the web platform.  The timing of email deliveries matters somewhat.  Receptivity was better on weekdays rather than weekends.  In addition, emails sent in the afternoons or early mornings were more effective than at night or in the later morning.      
+>There may be a cultural difference in terms of email privacy that may reflect this.  Another embarrassing issue is that maybe the emails were sent in English, and a lot of the non-English speaking recipients couldn't even read it.
+    
+>Users with higher prior purchases had much better response rates probably reflecting ongoing engagement with the web platform.  The timing of email deliveries matters somewhat.  Receptivity was better on weekdays rather than weekends.  In addition, emails sent in the afternoons or early mornings were more effective than at night or in the later morning.      
 
 
 >Not suprisingly, personalized short emails were more effective the long generic ones.

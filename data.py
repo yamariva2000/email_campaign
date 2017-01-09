@@ -98,6 +98,33 @@ def eda(graph=True):
 
 
 
+def tsne():
+    d=data()
+
+    pd.set_option('display.width', 1000)
+
+    dum=d[['email_text', 'email_version','time','day_type','prior_purchases']]
+
+    x=pd.get_dummies(dum)
+
+
+    y=d.clicked
+
+    x_train, x_test, y_test,y_test =train_test_split(x,y,test_size=.02,random_state=0)
+    from sklearn.manifold import TSNE
+    tsne=TSNE(n_components=2,random_state=0)
+
+    x_2d=tsne.fit_transform(x_test)
+
+    markers=['s','o']
+    colors=['green','blue']
+
+    for i,label in enumerate(np.unique(y_test)):
+        plt.scatter(x_2d[y_test==label,0],y=x_2d[y_test==label,1],c=colors[i],marker=markers[i],label=label)
+
+    plt.show()
+
 if __name__=='__main__':
 
     eda()
+    #tsne()
