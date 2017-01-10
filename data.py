@@ -27,8 +27,13 @@ def data():
             (cl.hour >= 18) & (cl.hour <= 24), 'Night', 'Early Morning')))
     cl['prior_purchases'] = np.where(cl['user_past_purchases'] == 0, '0 prior purchase',
                               np.where(cl['user_past_purchases'].isin([1, 2]), '1-2 prior',
-                                       np.where(cl.user_past_purchases.isin([3, 4, 5, 6]), '3-6 prior', '6+ prior'))
-                              )
+                                       np.where(cl.user_past_purchases.isin([3, 4, 5, 6]), '3-6 prior', '6+ prior')))
+
+    cl['purchases_cat'] = np.where(cl['user_past_purchases'] > 0, '1+ purchases','0 purchases' )
+
+    cl['country']=np.where(cl.user_country.isin(['US','UK']),'US_UK','FR_ES')
+
+
     cl['day_type']=np.where(cl.weekday.isin(['Saturday','Sunday']),'Weekend','Weekday')
 
 
@@ -68,6 +73,7 @@ def eda(graph=True):
     fig = plt.figure(1, figsize=(24, 14))
     plt.suptitle('Figure 1: Email Campaign EDA', fontsize=25)
     import sampling
+
     for i,j in enumerate(plot):
         ax=fig.add_subplot(2,3,i+1)
 

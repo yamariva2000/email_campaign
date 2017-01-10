@@ -47,29 +47,40 @@ def run_sim2():
 
     fig = plt.figure(2, figsize=(30, 15))
     fig.suptitle('NB optimized click rates',fontsize=35)
-    for j,i in enumerate([['prior_purchases','user_country','email_version','email_text','day_type']]):
+    for j,i in enumerate([['purchases_cat','country','email_version','email_text','day_type']]):
         #print d.head()
 
 
-        p = d.query("user_country in ('US','FR') & prior_purchases in ['0 prior purchase','6+ prior'] & email_version=='personalized' "
+        p = d.query("email_version=='personalized' "
                     "& email_text=='short_email' & "
                      "day_type=='Weekday'")
+        # p = d.query(
+        #     "user_country in ('US','FR') & prior_purchases in ['0 prior purchase','6+ prior'] & email_version=='personalized' "
+        #     "& email_text=='short_email' & "
+        #     "day_type=='Weekday'")
 
         p= pd.pivot_table(p,index=i,
-                             values=['sent','clicked'],aggfunc='sum')#.unstack()
+                             values=['sent','clicked'],aggfunc='sum')
 
         p['ctr']=p.clicked/p.sent
 
-
+        means=[]
         ax=fig.add_subplot(1,1,j+1)
         plt.subplots_adjust(left=.125,right=.9,top=.9,bottom=.1,wspace=.2,hspace=.9)
         for z in xrange(len(p.index)):
             n,email_sim=NB_sim(p.values[z,0],p.values[z,1])
             m=np.mean(email_sim)
-            #print m
-            ax.text(m,200,p.index[z],fontsize=25,fontweight='bold',rotation=40,color='orange')
+            means.append(m)
+            y_offset=(z%2)*50
 
-            ax.hist(email_sim,label="{} n={}".format(p.index[z],n))
+            ax.text(m, 200 + y_offset, ', '.join(p.index[z]), fontsize=25, fontweight='bold', rotation=40,
+                    color='orange')
+
+
+            ax.text(m,-10,'--->',fontsize=20, color='red', rotation=90)
+            ax.text(m, -25 , '{0:.2f}'.format(m), fontsize=20, color='red', rotation=0)
+
+            ax.hist(email_sim,label="{} mean={}".format(p.index[z],m))
 
         ax.set_title('{} vs. click rate'.format(i),fontsize=20)
         ax.set_xlabel('Click Rate',fontsize=20)
@@ -82,5 +93,5 @@ def run_sim2():
 
 if __name__=='__main__':
 
-    run_sim()
+    #run_sim()
     run_sim2()
